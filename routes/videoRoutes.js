@@ -2,7 +2,7 @@ const express = require('express');
 
 const videoRouter = express.Router();
 
-a = [];
+const a = [];
 
 videoRouter.get('/video', (req,res)=>{
     res.send(a);

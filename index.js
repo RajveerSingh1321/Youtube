@@ -2,18 +2,22 @@ const express = require('express');
 
 const videoRouter=require("./routes/videoRoutes");
 
-// const mongoose=require("mongoose");
+const mongoose=require("mongoose");
 
-// mongoose.connect('mongodb://localhost:3000/youtube').then(()=>{
-//     console.log("DB Connected");
-// });
+const authRouter=require("./routes/authRoutes");
+
+mongoose.connect("mongodb+srv://youtubeclone:1234@cluster0.5ofd4si.mongodb.net/youtubeclone_220240101114").then(()=>{
+    console.log("DB Connected");
+});
 
 const app = express();
 app.use(express.json());
 
 app.use(videoRouter);
 
-app.listen(3000,onServerStart);
+app.use(authRouter);
+
+app.listen(3000,onServerStart); 
 
 function onServerStart(){
     console.log("server started");
